@@ -27,7 +27,7 @@ function mainController($scope, $http) {
 
 	// Borra un album despues de checkearlo como acabado
 	$scope.deleteAlbum = function(id) {
-		$http.delete('/api/album' + id)
+		$http.delete('/api/albums/' + id)
 			.success(function(data) {
 				$scope.albums = data;
 				console.log(data);
@@ -36,4 +36,17 @@ function mainController($scope, $http) {
 				console.log('Error:' + data);
 			});
 	};
+
+	//llamada a cada album 
+	$scope.findAlbum = function(id){
+       $http.get('/api/albums/' + id)
+	    .success(function(data) {
+			$scope.album = data;
+			console.log(data)
+		})
+	    .error(function(data) {
+			console.log('Error: ' + data);
+		});
+	};
+	
 }

@@ -21,7 +21,8 @@ app.configure(function() {
 
 // Definición de modelos
 var Album = mongoose.model('Album', {
-	text: String
+	name: String,
+	poster: String
 });
 
 // Rutas de nuestro API
@@ -35,22 +36,10 @@ app.get('/api/albums', function(req, res) {
 	});
 });
 
-//GET de cada album
-app.get('/api/album:album', function(req, res) {
-Album.find({
-		_id: req.params.album
-	}, function(err, album) {
-		if(err){
-			res.send(err);
-		}
-		res.json(album);
-	  });
-});
-
 // POST que crea un Album y devuelve todos tras la creación
 app.post('/api/albums', function(req, res) {				
 	Album.create({
-		text: req.body.text,
+		name: req.body.name,
 		done: false
 	}, function(err, album){
 		if(err) {
@@ -84,6 +73,18 @@ app.delete('/api/albums/:album', function(req, res) {
 
 	})
 });
+
+//GET de cada album
+//app.get('/api/albums:album', function(req, res) {
+//Album.find({
+	//  _id: req.params.album
+	//}, function(err, album) {
+	//	if(err){
+		//	res.send(err);
+		//}
+		//res.json(album);
+	// });
+//});
 
 // Carga una vista HTML simple donde irá nuestra Single App Page
 // Angular Manejará el Frontend

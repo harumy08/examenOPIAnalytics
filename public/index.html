@@ -17,7 +17,9 @@
         	<div class="col-sm-4 col-sm-offset-4">
             	<div class="checkbox" ng-repeat="album in albums">
                 	<label>
+                    <!--<div ng-click="deleteAlbum(album._id)">Borra</div>-->
                     	<input type="checkbox" ng-click="deleteAlbum(album._id)"> {{ album.name }} 
+                       <!-- <div ng-click="findAlbum(album._id)">Ver</div>-->
                     </label>
                  </div>
              </div>
@@ -26,7 +28,7 @@
         	<div class="col-sm-8 col-sm-offset-2 text-center">
             	<form>
                 	<div class="form-group">
-                    	<input type="text" class="form-control input-lg text-center" placeholder="Inserta una tarea nueva" ng-model="formData.text">
+                    	<input type="text" class="form-control input-lg text-center" placeholder="Inserta un album nuevo" ng-model="formData.name">
                     </div>
                     <button class="btn btn-primary btn-lg" ng-click="createAlbum()">Añadir</button>
                 </form>
