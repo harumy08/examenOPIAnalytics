@@ -1,10 +1,10 @@
 {
- "name": "examenOPIAnalytics",
- "version": "2.0.0",
- "dependencies": {
- "mongoose": "~3.6.11",
- "express": "^4.7.1",
- "method-override": "^2.1.2",
- "body-parser": "^1.5.1"
- }
+	"name": "examenOPIAnalytics",
+	"version": "0.0.1",
+	"description": "Examen de Albums de Musica OPIAnalytics",
+	"main": "server.js",
+	"dependencies": {
+		"express": "~3.x",
+		"mongoose": "latest"
+	}
 }
