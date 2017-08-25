@@ -1,0 +1,27 @@
+<div ng-controller="songCtrl">
+<h1>Discover</h1>
+<div class="row row-sm">
+  <div ng-repeat="song in songs">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+		<div class="item">
+			<div class="pos-rlt">{{song.poster}}</div>
+		    <div class="padder-v"> 
+		    <a href="#" class="text-ellipsis">{{song.name}}</a>
+		    <div class="text-ellipsis" ng-click="deleteAlbum(song._id)">Eliminar</div>
+		    </div>
+		</div>
+	</div>
+  </div>	
+</div>
+
+<div id="todo-form" class="row row-sm">
+        	<div class="col-sm-8 col-sm-offset-2 text-center">
+            	<form>
+                	<div class="form-group">
+                    	<input type="text" class="form-control input-lg text-center" placeholder="Inserta una nueva cancion" ng-model="formData.name">
+                    </div>
+                    <button class="btn btn-primary btn-lg" ng-click="createSong()">Añadir</button>
+                </form>
+            </div>
+
+</div>

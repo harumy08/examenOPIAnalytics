@@ -1,40 +1,27 @@
-<!doctype html>
-<html lang="en" ng-app="examen">
+<!DOCTYPE html>
+<html lang="en" ng-app="albumApp">
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Angular TODO app</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <title>Examen</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/css/home.css">
 </head>
-<body ng-controller="mainController">
-	<div class="container"> 
-    <!--Cabecera-->
-    	<div class="jumbotron text-center">
-        	<h1>Album <span class="label label-info">{{ albums.length }}</span></h1>
-        </div>
-        <!--Lista de Todos-->
-        <div id="todo-list" class="row">
-        	<div class="col-sm-4 col-sm-offset-4">
-            	<div class="checkbox" ng-repeat="album in albums">
-                	<label>
-                    <!--<div ng-click="deleteAlbum(album._id)">Borra</div>-->
-                    	<input type="checkbox" ng-click="deleteAlbum(album._id)"> {{ album.name }} 
-                       <!-- <div ng-click="findAlbum(album._id)">Ver</div>-->
-                    </label>
-                 </div>
-             </div>
-         </div>
-         <!--Formulario para insertar nuevos Todo--> 			<div id="todo-form" class="row">
-        	<div class="col-sm-8 col-sm-offset-2 text-center">
-            	<form>
-                	<div class="form-group">
-                    	<input type="text" class="form-control input-lg text-center" placeholder="Inserta un album nuevo" ng-model="formData.name">
-                    </div>
-                    <button class="btn btn-primary btn-lg" ng-click="createAlbum()">Añadir</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> <script src="main.js"></script>
+<body>
+ <header>
+    <span class="glyphicon glyphicon-music" aria-hidden="true"></span> Music 
+ </header> 
+ <!--modulo principal donde se inyectan las vistas-->    
+  <main ui-view class="site">
+      <div ng-view></div>
+  </main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script> 
+    <script src="app.js"></script>
+
+
 </body>
 </html>

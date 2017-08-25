@@ -1,0 +1,27 @@
+<div ng-controller="mainCtrl">
+<h1>Discover</h1>
+<div class="row row-sm">
+  <div ng-repeat="album in albums">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+		<div class="item">
+			<div class="pos-rlt">{{album.poster}}</div>
+		    <div class="padder-v"> 
+		    <a href="#" class="text-ellipsis">{{album.name}}</a>
+		    <div class="text-ellipsis" ng-click="deleteAlbum(album._id)">Eliminar</div>
+		    </div>
+		</div>
+	</div>
+  </div>	
+</div>
+
+<div id="todo-form" class="row row-sm">
+        	<div class="col-sm-8 col-sm-offset-2 text-center">
+            	<form>
+                	<div class="form-group">
+                    	<input type="text" class="form-control input-lg text-center" placeholder="Inserta un album nuevo" ng-model="formData.name">
+                    </div>
+                    <button class="btn btn-primary btn-lg" ng-click="createAlbum()">Añadir</button>
+                </form>
+            </div>
+
+</div>

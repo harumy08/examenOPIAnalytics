@@ -25,6 +25,12 @@ var Album = mongoose.model('Album', {
 	poster: String
 });
 
+// Definición de modelos
+var Song = mongoose.model('Song', {
+	name: String,
+	poster: String
+});
+
 // Rutas de nuestro API
 // GET de todos los Album
 app.get('/api/albums', function(req, res) {				
@@ -33,6 +39,16 @@ app.get('/api/albums', function(req, res) {
 			res.send(err);
 		}
 		res.json(albums);
+	});
+});
+
+// GET de todos las canciones
+app.get('/api/songs', function(req, res) {				
+	Song.find(function(err, songs) {
+		if(err) {
+			res.send(err);
+		}
+		res.json(songs);
 	});
 });
 
@@ -55,6 +71,25 @@ app.post('/api/albums', function(req, res) {
 	});
 });
 
+// POST que crea una cancion y devuelve todas tras la creación
+app.post('/api/songs', function(req, res) {				
+	Song.create({
+		name: req.body.name,
+		done: false
+	}, function(err, song){
+		if(err) {
+			res.send(err);
+		}
+
+		Song.find(function(err, songs) {
+			if(err){
+				res.send(err);
+			}
+			res.json(songs);
+		});
+	});
+});
+
 // DELETE un Album específico y devuelve todos tras borrarlo.
 app.delete('/api/albums/:album', function(req, res) {		
 	Album.remove({
@@ -69,6 +104,25 @@ app.delete('/api/albums/:album', function(req, res) {
 				res.send(err);
 			}
 			res.json(albums);
+		});
+
+	})
+});
+
+// DELETE un cancion específico y devuelve todos tras borrarlo.
+app.delete('/api/songs/:song', function(req, res) {		
+	Song.remove({
+		_id: req.params.song
+	}, function(err, song) {
+		if(err){
+			res.send(err);
+		}
+
+		Song.find(function(err, songs) {
+			if(err){
+				res.send(err);
+			}
+			res.json(songs);
 		});
 
 	})
